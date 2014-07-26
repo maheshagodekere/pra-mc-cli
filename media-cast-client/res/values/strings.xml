@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/common/assets/res/any/strings.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">DenivipVideoComponents</string>
+
+    <!-- Title for error alert when a video cannot be played.  it can be used by any app. -->
+    <string name="VideoView_error_title">Cannot play video</string>
+    <!-- Text for error alert when a video container is not valid for progressive download/playback. -->
+    <string name="VideoView_error_text_invalid_progressive_playback">Sorry, this video is not valid for streaming to this device.</string>
+    <!-- Text for error alert when a video cannot be played. it can be used by any app. -->
+    <string name="VideoView_error_text_unknown">Sorry, this video cannot be played.</string>
+    <!-- Button to close error alert when a video cannot be played -->
+    <string name="VideoView_error_button">OK</string>
+
+    
+
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Demo Server.</string>
+    <string name="server_registered">From Demo Server: successfully added device!</string>
+    <string name="server_unregistered">From Demo Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Ad Server after %1$d attempts. Aborting!</string>
+    <string name="server_unregister_error">Could not unregister device on Ad Server (%1$s).</string>
+    
+    <!-- menu declaration -->
+    <string name="menu_settings">settings</string>
+    <string name="menu_settings_title">Settings</string>
+    
+     <!-- preference screen declaration -->
+    <string name="menu_internet">internet</string>
+    <string name="menu_internet_title">Internet</string>
+    
+    <string name="menu_refresh">refresh</string>
+    <string name="menu_refresh_title">Refresh App</string>
+
+    <string name="menu_diagnostics">diagnostics</string>
+    <string name="menu_diagnostics_title">Diagnostics</string>
+    
+    <string name="menu_register">register</string>
+    <string name="menu_register_title">GCM Register</string>
+    
+    <string name="menu_unregister">unregister</string>
+    <string name="menu_unregister_title">GCM Unregister</string>
+    
+    <string name="menu_clear">unregister</string>
+    <string name="menu_clear_title">Clear</string>
+
+    <string name="menu_exit">unregister</string>
+    <string name="menu_exit_title">Exit</string>
+    
+    <string name="menu_ping">ping</string>
+    <string name="menu_ping_title">Ping Ad server</string>
+    
+    <string name="pref_serverip">serverip</string>
+    <string name="pref_serverip_title">Server IP</string>
+    <string name="pref_serverip_desc">Click to enter ad server ip</string>
+    
+    <string name="pref_serverport">serverport</string>
+    <string name="pref_serverport_title">Server Port</string>
+    <string name="pref_serverport_desc">Click to enter ad server port</string>
+
+    <string name="pref_gmailid">gmailid</string>
+    <string name="pref_gmailid_title">GMail ID</string>
+    <string name="pref_gmailid_desc">Click to enter GMail id</string>
+
+    <string name="pref_senderid">senderidid</string>
+    <string name="pref_senderid_title">GCM Sender ID</string>
+    <string name="pref_senderid_desc">Click to GCM enter sender id</string>
+    
+    
+</resources>

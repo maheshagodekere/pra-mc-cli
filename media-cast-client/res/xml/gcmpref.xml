@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Mediacast Server Settings" >
+        <EditTextPreference
+            android:key="@+string/pref_serverip"
+            android:summary="@+string/pref_serverip_desc"
+            android:title="@+string/pref_serverip_title" />
+        <EditTextPreference
+            android:key="@+string/pref_serverport"
+            android:summary="@+string/pref_serverport_desc"
+            android:title="@+string/pref_serverport_title" />
+        <EditTextPreference
+            android:key="@+string/pref_gmailid"
+            android:summary="@+string/pref_gmailid_desc"
+            android:title="@+string/pref_gmailid_title" />
+        <EditTextPreference
+            android:key="@+string/pref_senderid"
+            android:summary="@+string/pref_senderid_desc"
+            android:title="@+string/pref_senderid_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
