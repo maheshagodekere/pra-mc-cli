@@ -34,11 +34,12 @@ public final class CommonUtilities {
     
 	//Mediacast local Server details
 	public static String SERVER_IP = "192.168.0.2";
-    public static String SERVER_PORT = "9080";
+	public static String WEB_SERVER_PORT = "9080";
+    public static String WEBSERVICE_SERVER_PORT = "8080";
 
-    //Mediacast Server url
-    public static String WEB_SERVER_URL = "http://"+SERVER_IP+":"+SERVER_PORT;
-    public static String WEBSERVICE_SERVER_URL = "http://"+SERVER_IP+":"+SERVER_PORT+"/mc-webservice";
+    //Mediacast web Server url
+    public static String WEB_SERVER_URL = "http://"+SERVER_IP+":"+WEB_SERVER_PORT+"/mc-web";
+    public static String WEBSERVICE_SERVER_URL = "http://"+SERVER_IP+":"+WEBSERVICE_SERVER_PORT+"/mc-webservice";
 
     //Media download server url
     public static String DOWNLOAD_URL =   WEB_SERVER_URL+"/md?mid=";
