@@ -1,15 +1,12 @@
 package com.pradeya.cast.media;
 
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import com.pradeya.cast.gcm.AdMetadata;
 
 import android.media.MediaPlayer;
 
 /**
-
+ * 
  * 
  * @hide
  */
@@ -31,7 +28,7 @@ public class MediaPlayerInternals {
 	public static boolean suspend(MediaPlayer mp) {
 		try {
 			Method method = mp.getClass().getMethod("suspend");
-			return ((Boolean)method.invoke(mp)).booleanValue();
+			return ((Boolean) method.invoke(mp)).booleanValue();
 		} catch (NoSuchMethodException e) {
 			return false;
 		} catch (IllegalAccessException e) {
@@ -44,7 +41,7 @@ public class MediaPlayerInternals {
 	public static boolean resume(MediaPlayer mp) {
 		try {
 			Method method = mp.getClass().getMethod("resume");
-			return ((Boolean)method.invoke(mp)).booleanValue();
+			return ((Boolean) method.invoke(mp)).booleanValue();
 		} catch (NoSuchMethodException e) {
 			return false;
 		} catch (IllegalAccessException e) {

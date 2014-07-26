@@ -1,19 +1,9 @@
 package com.pradeya.cast.media;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-
-
-import com.pradeya.cast.gcm.GcmPrefActivity;
-import com.pradeya.cast.service.MediaIdPullService;
-import com.pradeya.cast.util.CommonUtilities;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -29,9 +19,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.webkit.URLUtil;
 import android.widget.MediaController;
 import android.widget.Toast;
+
+import com.pradeya.cast.service.MediaIdPullService;
+import com.pradeya.cast.util.CommonUtilities;
 
 public class MediacastMain extends Activity implements OnCompletionListener {
 	private static final String TAG = "MediacastMain";
@@ -50,25 +42,28 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 
 		Calendar cal = Calendar.getInstance();
 
-		/*********Scheduling GCMRegistration  Polling ***********/
-		Intent intent = new Intent(this, GCMRegisterService.class);
-		PendingIntent pintent = PendingIntent.getService(this, 2013, intent, 0);
+		// /*********Scheduling GCMRegistration Polling ***********/
+		// Intent intent = new Intent(this, GCMRegisterService.class);
+		// PendingIntent pintent = PendingIntent.getService(this, 2013, intent,
+		// 0);
+		//
+		// AlarmManager alarm = (AlarmManager)
+		// getSystemService(Context.ALARM_SERVICE);
+		// alarm.cancel(pintent);
+		// // Start every 15 Minutes
+		// alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+		// 15 * 60 * 1000, pintent);
 
-		AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-		alarm.cancel(pintent);
-		// Start every 15 Minutes
-		alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-				15 * 60 * 1000, pintent);
-
-		/*********Scheduling Media Server Polling ***********/
+		/********* Scheduling Media Server Polling ***********/
 		Intent mediaIdIntent = new Intent(this, MediaIdPullService.class);
-		PendingIntent mediaIdPendingIntent = PendingIntent.getService(this, 2013, mediaIdIntent, 0);
+		PendingIntent mediaIdPendingIntent = PendingIntent.getService(this,
+				2013, mediaIdIntent, 0);
 
 		AlarmManager mediaIdAlarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 		mediaIdAlarm.cancel(mediaIdPendingIntent);
 		// Start every 15 Seconds
-		mediaIdAlarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-				30 * 1000, mediaIdPendingIntent);
+		mediaIdAlarm.setRepeating(AlarmManager.RTC_WAKEUP,
+				cal.getTimeInMillis(), 30 * 1000, mediaIdPendingIntent);
 	}
 
 	@Override
@@ -87,7 +82,7 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 		MediaController mMedia = new MediaController(this);
 		mMedia.setMediaPlayer(mVideoView);
 		mMedia.setAnchorView(mVideoView);
-		//mVideoView.setMediaController(mMedia);
+		// mVideoView.setMediaController(mMedia);
 
 		MediaPlayer.OnCompletionListener myVideoViewCompletionListener = new MediaPlayer.OnCompletionListener() {
 
@@ -145,7 +140,7 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 		 */
 		case R.string.menu_settings:
 			mVideoView.stopPlayback();
-			startActivity(new Intent(this, GcmPrefActivity.class));
+			// startActivity(new Intent(this, GcmPrefActivity.class));
 			return true;
 		case R.string.menu_diagnostics:
 			mVideoView.stopPlayback();
@@ -163,11 +158,11 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 		try {
 			mVideoView.stopPlayback();
 			String path = "/sdcard/mediacast/blank.mp4"; // getResources().getMovie(R.drawable.starting);
-			
-			if(MediaStore.getSize()==0){
+
+			if (MediaStore.getSize() == 0) {
 				loadAllDownlaodedFiles();
 			}
-			
+
 			MediaBean media = MediaStore.removeFirst();
 			if (media == null) {
 				mVideoView.setBackgroundDrawable(getResources().getDrawable(
@@ -187,7 +182,8 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 
 			Log.v(TAG, "Background media path: " + path);
 			if (media != null) {
-				Log.v(TAG, "Foreground media path: " + media.getMediaLocalPath());
+				Log.v(TAG,
+						"Foreground media path: " + media.getMediaLocalPath());
 			}
 			if (path == null || path.length() == 0) {
 				Toast.makeText(MediacastMain.this, "File URL/path is empty",
@@ -262,7 +258,8 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 		Log.d(TAG, "### Loading from file path /mnt/sdcard/mediacast/pull");
 		File dir = new File(CommonUtilities.MEDIA_DIR_PATH);
 		File[] files = dir.listFiles();
-		Log.d(TAG, "### Filelist from " +CommonUtilities.MEDIA_DIR_PATH+": "+files.length);
+		Log.d(TAG, "### Filelist from " + CommonUtilities.MEDIA_DIR_PATH + ": "
+				+ files.length);
 		Pair[] pairs = new Pair[files.length];
 		String[] absoluteFilePath = new String[files.length];
 		for (int i = 0; i < files.length; i++)
@@ -273,25 +270,25 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 		Log.d(TAG, "### Filelist sorting complete");
 		// Take the sorted pairs and extract only the file part, discarding the
 		// timestamp.
-		
+
 		for (int i = 0; i < files.length; i++)
 			absoluteFilePath[i] = pairs[i].f.getAbsolutePath();
-		
+
 		Log.d(TAG, "### Loading Mediastore");
 		loadMediaStore(absoluteFilePath);
-		Log.d(TAG, "### Mediastore after loading: "+MediaStore.getSize());
+		Log.d(TAG, "### Mediastore after loading: " + MediaStore.getSize());
 
 	}
-	
-	private void loadMediaStore(String[] allFiles){
-		if(allFiles != null && allFiles.length>0){
-			Log.i(TAG,
-					"### Clearing all datastore elements of size: " + MediaStore.getSize() );
+
+	private void loadMediaStore(String[] allFiles) {
+		if (allFiles != null && allFiles.length > 0) {
+			Log.i(TAG, "### Clearing all datastore elements of size: "
+					+ MediaStore.getSize());
 			MediaStore.clearDataStore();
-		}
-		else return;
-		
-		for (int i = 0; i < allFiles.length; i++){
+		} else
+			return;
+
+		for (int i = 0; i < allFiles.length; i++) {
 			MediaBean dm = new MediaBean();
 			if (allFiles[i].contains(CommonUtilities.MP4_EXT)) {
 				dm.setMediaType(CommonUtilities.VIDEO);
@@ -299,8 +296,7 @@ public class MediacastMain extends Activity implements OnCompletionListener {
 				dm.setMediaType(CommonUtilities.IMAGE);
 			}
 			dm.setMediaLocalPath(allFiles[i]);
-			Log.i(TAG,
-					"### Adding to MediaStore: " + allFiles[i]);
+			Log.i(TAG, "### Adding to MediaStore: " + allFiles[i]);
 			MediaStore.addLast(dm);
 		}
 	}

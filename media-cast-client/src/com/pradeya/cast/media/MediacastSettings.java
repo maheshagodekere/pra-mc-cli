@@ -29,8 +29,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.google.android.gcm.GCMRegistrar;
-import com.pradeya.cast.gcm.GcmPrefActivity;
 import com.pradeya.cast.util.CommonUtilities;
 
 /**
@@ -73,13 +71,13 @@ public class MediacastSettings extends Activity {
 		 * options on options_menu.xml).
 		 */
 		case R.string.menu_settings:
-			startActivity(new Intent(this, GcmPrefActivity.class));
+			//startActivity(new Intent(this, GcmPrefActivity.class));
 			return true;
 		case R.string.menu_register:
-			GCMRegistrar.register(this, CommonUtilities.SENDER_ID);
+			//GCMRegistrar.register(this, CommonUtilities.SENDER_ID);
 			return true;
 		case R.string.menu_unregister:
-			GCMRegistrar.unregister(this);
+			//GCMRegistrar.unregister(this);
 			return true;
 		case R.string.menu_clear:
 			mDisplay.setText(null);
@@ -105,7 +103,7 @@ public class MediacastSettings extends Activity {
 		} catch (Exception e) {
 
 		}
-		GCMRegistrar.onDestroy(getApplicationContext());
+		//GCMRegistrar.onDestroy(getApplicationContext());
 		super.onDestroy();
 	}
 

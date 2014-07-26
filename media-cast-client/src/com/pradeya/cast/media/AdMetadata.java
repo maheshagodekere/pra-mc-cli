@@ -1,3 +1,5 @@
+package com.pradeya.cast.media;
+
 /*
  * Copyright (C) 2009 The Android Open Source Project
  *
@@ -14,9 +16,6 @@
  * limitations under the License.
  */
 
-package com.pradeya.cast.gcm;
-
-import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.util.Log;
 

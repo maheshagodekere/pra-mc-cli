@@ -16,6 +16,9 @@
 
 package com.pradeya.cast.media;
 
+import java.io.IOException;
+import java.util.Map;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -36,11 +39,6 @@ import android.view.View;
 import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
 
-import java.io.IOException;
-import java.util.Map;
-
-
-import com.pradeya.cast.gcm.AdMetadata;
 
 /**
  * Displays a video file.  The VideoView class

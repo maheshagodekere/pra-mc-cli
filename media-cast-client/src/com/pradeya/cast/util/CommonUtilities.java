@@ -28,9 +28,13 @@ import android.preference.PreferenceManager;
  */
 public final class CommonUtilities {
 
-	//Mediacast Server details
-	public static String SERVER_IP = "54.255.134.91";
-    public static String SERVER_PORT = "80";
+	//Mediacast production Server details
+	//public static String SERVER_IP = "54.255.134.91";
+    //public static String SERVER_PORT = "80";
+    
+	//Mediacast local Server details
+	public static String SERVER_IP = "192.168.0.2";
+    public static String SERVER_PORT = "9080";
 
     //Mediacast Server url
     public static String WEB_SERVER_URL = "http://"+SERVER_IP+":"+SERVER_PORT;

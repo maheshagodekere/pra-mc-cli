@@ -53,26 +53,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="com.pradeya.cast.gcm.GcmPrefActivity"/>
 
-        <!--
-          BroadcastReceiver that will receive intents from GCM
-          services and handle them to the custom IntentService.
-
-          The com.google.android.c2dm.permission.SEND permission is necessary
-          so only GCM services can send data messages for the app.
-        -->
-        <receiver
-            android:name="com.google.android.gcm.GCMBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
-                <!-- Receives the actual messages. -->
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <!-- Receives the registration id. -->
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="com.pradeya.cast.media" />
-            </intent-filter>
-        </receiver>
         
         <receiver android:name="com.pradeya.cast.receiver.BootReceiver"
             android:enabled="true"
@@ -83,18 +64,8 @@
       		</intent-filter>
     	</receiver>
 
-        <!--
-          Application-specific subclass of GCMBaseIntentService that will
-          handle received messages.
-
-          By default, it must be named .GCMIntentService, unless the
-          application uses a custom BroadcastReceiver that redefines its name.
-        -->
-        <service android:name="com.pradeya.cast.media.GCMIntentService" />
-        <service android:name="com.pradeya.cast.media.GCMRegisterService" android:launchMode="singleTop"/>
         <service android:name="com.pradeya.cast.service.MediaDownloadService" android:launchMode="singleTop"/>
         <service android:name="com.pradeya.cast.service.MediaIdPullService" android:launchMode="singleTop"/>
-        
-       
+      
 	</application>
 </manifest>
